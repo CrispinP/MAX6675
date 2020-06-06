@@ -1,11 +1,13 @@
 #include <MAX6675.h>
 
-MAX6675::MAX6675(int16_t SSPin)
+MAX6675::MAX6675(int16_t clk, int16_t SSPin, int16_t miso)
 {
 	_SSPin = SSPin;
 	pinMode(_SSPin, OUTPUT);
 	digitalWrite(_SSPin, HIGH);
-	SPI.begin();
+	SPI.begin(clk, miso, mois, _SSPin);//CLK,MISO,MOIS,SS
+
+
 	_lastCallTime = 0;
 }
 
